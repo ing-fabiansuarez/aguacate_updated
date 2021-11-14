@@ -1,0 +1,31 @@
+.bg-gradient-primary {
+    background: linear-gradient( 87deg, #D290F4 0, rgb(143, 116, 216) 100%) !important;
+}
+
+.fill-default {
+    fill: #000;
+}
+
+.bg-default {
+    background-color: #000 !important;
+}
+
+.form-control {
+    color: #000;
+}
+
+.navbar-horizontal .navbar-brand img {
+    height: 60px;
+}
+
+.sidenav .navbar-brand {
+    padding: 1rem;
+}
+
+.bg-primary {
+    background-color: #D290F4 !important;
+}
+
+.bg-primary-soft {
+    background-color: #f8e4fc !important;
+}

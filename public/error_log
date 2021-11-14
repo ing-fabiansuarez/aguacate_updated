@@ -1,0 +1,1 @@
+[13-Nov-2021 13:37:53 America/Bogota] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 24418032 bytes) in /home/kathecre/aguacatebykathe/system/ThirdParty/Kint/Renderer/RichRenderer.php on line 545
