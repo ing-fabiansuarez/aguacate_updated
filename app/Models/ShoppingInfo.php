@@ -21,6 +21,7 @@ class ShoppingInfo extends Model
         'surname_shoppinginfo',
         'typeidentification_id',
         'num_phone',
-        'email_shoppinginfo'
+        'email_shoppinginfo',
+        'cedula_num_shoppinginfo'
     ];
 }
