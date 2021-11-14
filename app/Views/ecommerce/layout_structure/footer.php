@@ -6,7 +6,7 @@
                     <img style="width: 130px;" src="<?= base_url() ?>/assets/img/corporative/logonegro.png">
                 </a>
             </h2>
-            <p>Sube una foto y etiquetanos.</p>
+            <p>Sube una foto y etiqu&eacute;tanos.</p>
             <ul class="social-nav model-3d-0 footer-social w3_agile_social two">
                 <li>
                     <a href="https://www.instagram.com/aguacatebykathe/" class="instagram">

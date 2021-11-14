@@ -72,7 +72,7 @@
 
 <div class="banner-bootom-w3-agileits">
     <div class="container">
-        <h3 style="padding-top: 2rem;" class="wthree_text_info"><span>Cada prenda es un&iacute;ca</span> como t&uacute;</h3>
+        <h3 style="padding-top: 2rem;" class="wthree_text_info"><span>Cada prenda es &uacute;nica</span> como t&uacute;</h3>
 
         <div class="col-md-5 bb-grids bb-middle-agileits-w3layouts">
             <a href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">

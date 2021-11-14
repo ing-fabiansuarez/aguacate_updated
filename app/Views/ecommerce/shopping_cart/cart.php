@@ -28,7 +28,7 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th scope="col" style="width: 200px;">Product</th>
+                            <th scope="col" style="width: 200px;">Producto</th>
                             <th scope="col">Talla</th>
                             <th scope="col">Catidad</th>
                             <th scope="col">Precio Unitario</th>
