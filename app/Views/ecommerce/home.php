@@ -78,7 +78,7 @@
             <a href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">
                 <div class="bb-middle-agileits-w3layouts grid">
                     <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category1.jpg" alt=" " class="img-responsive" />
+                        <img src="assets/img/ecommerce/home/category1-1.jpeg" alt=" " class="img-responsive" />
                         <figcaption>
                             <h3><span>V</span>estidos Cortos </h3>
                             <br><br>
