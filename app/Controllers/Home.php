@@ -8,4 +8,9 @@ class Home extends BaseController
     {
         return view('ecommerce/home');
     }
+
+    public function link()
+    {
+        return view('others/link');
+    }
 }

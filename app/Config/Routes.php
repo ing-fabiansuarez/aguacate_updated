@@ -21,7 +21,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
-$routes->setAutoRoute(true);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -31,6 +31,9 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+//route link
+$routes->get('link', 'Home::link', ['as' => 'link_contact']);
 
 //RUTAS DEL ECOMMERCE
 $routes->group('/', ['namespace' => 'App\Controllers\Ecommerce'], function ($routes) {
@@ -56,6 +59,7 @@ $routes->group('/', ['namespace' => 'App\Controllers\Ecommerce'], function ($rou
     $routes->add('bancosdisponibles', 'Payments::getBanksAvailable', ['as' => 'banks_availables_payment']);
     $routes->get('pagina-de-respuesta', 'Section::pageRequestPayment', ['as' => 'view_request_page_payment']);
     $routes->get('pagina-de-respuesta-t-c', 'Section::pageRequestPaymentCredit', ['as' => 'view_request_page_credit_card_payment']);
+    $routes->add('update-orders-pendings', 'Payments::updateStateOrder', ['as' => 'update_state_order']);
 });
 
 //RUTAS PARA AJAX Y API

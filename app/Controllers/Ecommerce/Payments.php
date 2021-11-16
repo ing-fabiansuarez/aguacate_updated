@@ -4,6 +4,7 @@ namespace App\Controllers\Ecommerce;
 
 use App\Controllers\BaseController;
 use App\Entities\ShoppingCartClass;
+use App\Models\OrderPwModel;
 use App\Models\PaymentMethodModel;
 use Environment;
 use Exception;
@@ -11,6 +12,7 @@ use PayU;
 use PayUCountries;
 use PayUParameters;
 use PayUPayments;
+use PayUReports;
 use SupportedLanguages;
 
 class Payments extends BaseController
@@ -31,6 +33,7 @@ class Payments extends BaseController
 
         //DECLARACION DE LOS MODELOS
         $this->mdlMPaymentMethod = new PaymentMethodModel();
+        $this->mdlOrder = new OrderPwModel();
     }
 
     public function creditCard()
@@ -162,7 +165,7 @@ class Payments extends BaseController
             $state = $response->transactionResponse->state;
             if ($state == "PENDING") {
             }
-            $shoppingCartClass->save($state,$orderId);
+            $shoppingCartClass->save($state, $orderId);
             return redirect()->to(base_url() . route_to('view_request_page_credit_card_payment') . '?state=' . $state . '&msg=' . $msg);
         }
     }
@@ -303,10 +306,10 @@ class Payments extends BaseController
                 $response->transactionResponse->pendingReason;
                 $response->transactionResponse->trazabilityCode;
                 //$response->transactionResponse->authorizationCode;
-                $shoppingCartClass->save($state,$orderId);
+                $shoppingCartClass->save($state, $orderId);
                 return redirect()->to($response->transactionResponse->extraParameters->BANK_URL);
             }
-            $shoppingCartClass->save($state,$orderId);
+            $shoppingCartClass->save($state, $orderId);
             return redirect()->to($response->transactionResponse->extraParameters->BANK_URL);
             /* $response->transactionResponse->paymentNetworkResponseCode;
             $response->transactionResponse->paymentNetworkResponseErrorMessage;
@@ -330,5 +333,47 @@ class Payments extends BaseController
         $banks = $array->banks;
 
         echo json_encode($banks);
+    }
+
+
+    public function updateStateOrder()
+    {
+        foreach ($this->mdlOrder->where('state_order', 'PENDING')->findAll() as $orderPw) {
+            // Incluye aquí la referencia de la orden.
+            $parameters = array(PayUParameters::REFERENCE_CODE => $orderPw->ref_orderpw);
+            $response = PayUReports::getOrderDetailByReferenceCode($parameters);
+            d($response);
+            foreach ($response as $order) {
+                $order->accountId;
+                $order->status;
+                $order->referenceCode;
+                $order->additionalValues->TX_VALUE->value;
+                $order->additionalValues->TX_TAX->value;
+
+                if ($order->buyer) {
+                    $order->buyer->emailAddress;
+                    $order->buyer->fullName;
+                }
+
+                $transactions = $order->transactions;
+                foreach ($transactions as $transaction) {
+                    $transaction->type;
+                    $transaction->transactionResponse->state;
+                    $transaction->transactionResponse->paymentNetworkResponseCode;
+                    $transaction->transactionResponse->trazabilityCode;
+                    $transaction->transactionResponse->responseCode;
+                    if ($transaction->payer) {
+                        $transaction->payer->fullName;
+                        $transaction->payer->emailAddress;
+                    }
+                }
+                $orderPw->changeState($transaction->transactionResponse->state);
+                if ($orderPw->hasChanged()) {
+                    $this->mdlOrder->save($orderPw);
+                }
+
+                d($orderPw);
+            }
+        }
     }
 }
