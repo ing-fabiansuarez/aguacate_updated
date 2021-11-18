@@ -9,6 +9,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style type="text/css">
+        body {
+            background-image: url("<?= base_url() ?>/assets/img/corporative/background.jpeg");
+            background-size: 100% ;
+            background-attachment: fixed;
+        }
+
         .btn {
 
             border-radius: 3px;
@@ -53,7 +59,7 @@
     <title>Aguacatebykathe</title>
 </head>
 
-<body style="background: #000;">
+<body>
     <div class="container">
         <br><br><br><br><br><br><br>
         <div class="row">
@@ -62,7 +68,8 @@
             </div>
             <div class="col-md-8">
                 <div class="text-center">
-                    <img class="img-fluid rounded" src="<?= base_url() ?>/assets/img/corporative/creo_en_mi_me_lo_merezco_blaco.png"><br><br>
+                   <!--  <img class="img-fluid rounded" src="<?= base_url() ?>/assets/img/corporative/creo_en_mi_me_lo_merezco_blaco.png"> -->
+                   <br><br><br><br><br><br>
                 </div>
             </div>
             <div class="col-md-2">
@@ -73,7 +80,7 @@
         <br>
 
         <a class="btn btn-green btn-success btn-lg btn-block" href="https://api.whatsapp.com/send?phone=573228853850">WhatsApp</a>
-        <a class="btn btn-green btn-success btn-lg btn-block" href="https://aguacatebykathe.com/">Pagina web</a>
+        <a class="btn btn-green btn-success btn-lg btn-block" href="https://aguacatebykathe.com/">P&aacute;gina web</a>
         <br>
     </div>
 

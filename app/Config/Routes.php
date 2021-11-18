@@ -84,10 +84,20 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
         $routes->get('buscar', 'Product::searchProduct', ['as' => 'view_search_products']);
     });
 
+    //ORDERS
+    $routes->group('pedidos', ['namespace' => 'App\Controllers\Admin\Orders', 'filter' => 'auth'], function ($routes) {
+        $routes->get('diarios/(:segment)', 'Order::dailyOrders/$1', ['as' => 'view_daily_orders']);
+        $routes->post('redirect', 'Order::redirectToDaylyOrders', ['as' => 'redirect_to_view_daily_orders']);
+    });
+
     //categorias
     $routes->group('categoria', ['namespace' => 'App\Controllers\Admin\Category', 'filter' => 'auth'], function ($routes) {
         $routes->add('crear', 'Category::create', ['as' => 'create_category']);
         $routes->add('get', 'Category::getCategories', ['as' => 'get_all_categories']);
+    });
+
+    $routes->group('api', ['namespace' => 'App\Controllers\Admin\ApiPrivate', 'filter' => 'auth'], function ($routes) {
+        $routes->add('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
     });
 });
 

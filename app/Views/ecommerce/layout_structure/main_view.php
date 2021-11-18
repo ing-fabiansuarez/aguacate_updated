@@ -181,7 +181,6 @@
     <!-- SHOPPING CART -->
     <script>
         $(document).ready(function() {
-            toastr.success('Se guardaron los cambios.');
 
             $(document).on("click", "#input_add", function() {
                 $("#content_modal div").remove();

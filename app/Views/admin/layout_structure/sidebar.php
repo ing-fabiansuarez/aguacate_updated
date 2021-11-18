@@ -43,6 +43,12 @@
                             <span class="nav-link-text">Buscar Producto</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $this->renderSection('listorderdaily') ?>" href="<?= base_url() . route_to('view_daily_orders', date("Y-m-d")) ?>">
+                            <i class="ni ni-bullet-list-67 text-default"></i>
+                            <span class="nav-link-text">Pedidos Diarios</span>
+                        </a>
+                    </li>
                 </ul>
 
                 <hr class="my-3">
