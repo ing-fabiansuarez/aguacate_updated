@@ -16,13 +16,13 @@
         <div class="item active">
             <div class="container">
                 <div class="carousel-caption">
-                    <h3>Ropa Nueva <span>Todos los fines de semana</span></h3>
+                    <!-- <h3>Ropa Nueva <span>Todos los fines de semana</span></h3>
                     <p>Nuevas Colecciones</p>
-                    <a class="hvr-outline-out button2" href="<?= base_url() . route_to('section_new_ecommerce') ?>">Lo quiero todo </a>
+                    <a class="hvr-outline-out button2" href="<?= base_url() . route_to('section_new_ecommerce') ?>">Lo quiero todo </a> -->
                 </div>
             </div>
         </div>
-        <div class="item item2">
+       <!--  <div class="item item2">
             <div class="container">
                 <div class="carousel-caption">
                     <h3>Ropa Nueva <span>Todos los fines de semana</span></h3>
@@ -30,7 +30,7 @@
                     <a class="hvr-outline-out button2" href="<?= base_url() . route_to('section_new_ecommerce') ?>">Comprar ahora </a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- <div class="item item3">
 				<div class="container">
 					<div class="carousel-caption">
