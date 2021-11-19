@@ -30,19 +30,49 @@ class ProductModel extends Model
 
     public function getNewProductsPagWeb()
     {
-        return  $this->where('active_product', true)
+        $arrayResult = array();
+        $newProducts =  $this->where('active_product', true)
             ->where('showpw_product', true)
             ->where('new_product', true)
-            ->orderBy('score_product','desc')
-            ->findAll(10);
+            ->orderBy('score_product', 'desc')
+            ->findAll(15);
+        foreach ($newProducts as $product) {
+            if ($product->quantityStockAnySize() > 0) {
+                array_push($arrayResult, $product);
+            }
+        }
+        return $arrayResult;
     }
+
     public function getProductsByCategoryPagWeb($idCategory)
     {
-        return $this->where('active_product', true)
+        $arrayResult = array();
+        $productsCategory = $this->where('active_product', true)
             ->where('showpw_product', true)
             ->where('category_id', $idCategory)
-             ->orderBy('score_product','desc')
+            ->orderBy('score_product', 'desc')
             ->findAll();
+        foreach ($productsCategory as $product) {
+            if ($product->quantityStockAnySize() > 0) {
+                array_push($arrayResult, $product);
+            }
+        }
+        return $arrayResult;
+    }
+    public function getProductsOutofStockByCategoryPagWeb($idCategory)
+    {
+        $arrayResult = array();
+        $productsCategory = $this->where('active_product', true)
+            ->where('showpw_product', true)
+            ->where('category_id', $idCategory)
+            ->orderBy('score_product', 'desc')
+            ->findAll();
+        foreach ($productsCategory as $product) {
+            if ($product->quantityStockAnySize() <= 0) {
+                array_push($arrayResult, $product);
+            }
+        }
+        return $arrayResult;
     }
 
     public function generateSizeStockLockerBarcode($idProduct, $sizeId, $quantityStock)

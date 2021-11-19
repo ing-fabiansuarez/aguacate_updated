@@ -20,7 +20,7 @@ class Section extends BaseController
     public function new()
     {
         return view('ecommerce/section/new', [
-            'products' => $this->mdlProduct->getNewProductsPagWeb()
+            'products' => $this->mdlProduct->getNewProductsPagWeb(),
         ]);
     }
 
@@ -32,6 +32,7 @@ class Section extends BaseController
         return view('ecommerce/section/categories', [
             'products' => $this->mdlProduct->getProductsByCategoryPagWeb($category['id_category']),
             'category' => $category,
+            'outofstock_products' => $this->mdlProduct->getProductsOutofStockByCategoryPagWeb($category['id_category'])
         ]);
     }
 

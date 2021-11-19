@@ -36,8 +36,50 @@
                                 </div>
                             </div>
                             <?php if ($product->new_product) : ?>
-                                <span class="product-new-top">Nuevo</span>
+                                <span style="background-color: purple;" class="product-new-top">Nuevo</span>
                             <?php endif; ?>
+                        </div>
+                        <div class="item-info-product ">
+                            <h4><a href="#"><?= $category['name_category'] ?></a></h4>
+                            <div class="info-product-price">
+                                <span class="item_price">$ <?= number_format($product->price_product) ?></span>
+                                <!-- <del>$69.71</del> -->
+                            </div>
+                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+                                <fieldset>
+                                    <input type="hidden" id="id_product" name="id_product" value="<?= $product->id_product ?>">
+                                    <input id="input_add" type="submit" value="Agregar al Carrito" class="button">
+                                </fieldset>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <?php foreach ($outofstock_products as $product) :
+                $images = $product->getImages();
+            ?>
+                <div class="col-md-3 product-men">
+                    <div class="men-pro-item simpleCart_shelfItem">
+                        <div class="men-thumb-item">
+
+                            <div style="position:relative">
+                                <img src="<?php if (count($images) >= 2) : echo base_url($images[0]['path_thumb_image']);
+                                            endif ?>" alt="" class="pro-image-front">
+                                <div style="position:absolute; top:0; left:0;">
+                                    <img src="<?php if (count($images) >= 2) : echo base_url('assets/img/corporative/outstock_logo.png');
+                                                endif ?>" alt="" class="pro-image-front">
+                                </div>
+                            </div>
+
+                            <img src="<?php if (count($images) >= 2) : echo base_url($images[1]['path_thumb_image']);
+                                        endif ?>" alt="" class="pro-image-back">
+                            <div class="men-cart-pro">
+                                <div class="inner-men-cart-pro">
+                                    <a href="<?= base_url() . route_to('view_single_product') ?>?id=<?= $product->id_product ?>" class="link-product-add-cart">Ver Producto</a>
+                                </div>
+                            </div>
+                            <span class="product-new-top">Agotado</span>
                         </div>
                         <div class="item-info-product ">
                             <h4><a href="#"><?= $category['name_category'] ?></a></h4>

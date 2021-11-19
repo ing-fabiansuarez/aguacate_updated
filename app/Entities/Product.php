@@ -39,6 +39,14 @@ class Product extends Entity
     }
     public function getImages()
     {
-        return  $this->mdlImage->where('product_id',$this->id_product)->findAll();
+        return  $this->mdlImage->where('product_id', $this->id_product)->findAll();
+    }
+    public function quantityStockAnySize()
+    { //este modelo muestra la cantidad total que hay de ese producto, sea cual sea la talla.
+        $quantity = 0;
+        foreach ($this->mdlStock->where('product_id', $this->id_product)->findAll() as $stock) {
+            $quantity += $stock['quantity_stock'];
+        }
+        return $quantity;
     }
 }
