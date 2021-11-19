@@ -13,8 +13,8 @@ class Order extends BaseController
     }
     public function dailyOrders($date)
     {
-        $orders = $this->mdlOrderPw->where("updated_at_orderpw between '$date 00:00:00'
-        and '$date 23:59:59'")->orderBy('updated_at_orderpw', 'asc')->findAll();
+        $orders = $this->mdlOrderPw->where("created_at_orderpw between '$date 00:00:00'
+        and '$date 23:59:59'")->orderBy('cosecutive_order', 'asc')->findAll();
         return view('admin/orders/daily_orders', [
             'orders' => $orders,
             'date' => $date
