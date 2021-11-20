@@ -12,6 +12,7 @@
 <script>
     $(document).ready(function() {
         $('#table_orders').DataTable({
+            pageLength: 100,
             ordering: false,
             language: {
                 "decimal": "",

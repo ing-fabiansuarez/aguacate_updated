@@ -60,7 +60,7 @@ class ShoppingCartClass
         return $this->mdlCity->getcity($this->sessionShoppingInfo['city']);
     }
 
-    public function save($state,$payuref)
+    public function save($state, $payuref)
     {
         $consecutive = count($this->mdlOrder->findAll()) + 1;
         $this->mdlShoppingInfo->insert([
@@ -80,7 +80,7 @@ class ShoppingCartClass
             'state_order' => $state,
             'cosecutive_order' => $consecutive,
             'shoppinginfo_id' => $this->reference,
-            'ref_payu'=> $payuref
+            'ref_payu' => $payuref
         ]);
 
         foreach ($this->sessionShoppingCart as $ref) {
