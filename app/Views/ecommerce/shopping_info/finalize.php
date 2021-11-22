@@ -101,6 +101,10 @@
                                 <table class="table table-striped">
                                     <tbody>
                                         <tr>
+                                            <td><b>VALOR FLETE</b></td>
+                                            <td>Cobro Contraentrega</td>
+                                        </tr>
+                                        <tr>
                                             <td><b>Ciudad</b></td>
                                             <td><?= $cityAndDepartment ?></td>
                                         </tr>

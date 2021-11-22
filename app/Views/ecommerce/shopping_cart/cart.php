@@ -68,8 +68,8 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th>TOTAL EN PRODUCTOS</th>
-                            <th>$ <?= number_format($totalShoppingCart) ?></th>
+                            <th>TOTAL EN PRODUCTOS <br>FLETE</th>
+                            <th>$ <?= number_format($totalShoppingCart) ?><br>Contraentrega</th>
                         </tr>
                     </tfoot>
                 </table>
