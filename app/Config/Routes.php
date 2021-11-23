@@ -96,6 +96,11 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
         $routes->add('get', 'Category::getCategories', ['as' => 'get_all_categories']);
     });
 
+    //REPORTES
+    $routes->group('reportes', ['namespace' => 'App\Controllers\Admin\ReportsGenerate', 'filter' => 'auth'], function ($routes) {
+        $routes->post('rotulo', 'Rotulo::index', ['as' => 'generate_rotulo']);
+    });
+
     $routes->group('api', ['namespace' => 'App\Controllers\Admin\ApiPrivate', 'filter' => 'auth'], function ($routes) {
         $routes->add('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
     });

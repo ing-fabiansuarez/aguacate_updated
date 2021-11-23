@@ -155,6 +155,9 @@
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
     <?php if ($orderpw->state_order == 'APPROVED') : ?>
-        <button type="button" class="btn btn-primary">Imprimir Rotulo</button>
+        <form target="_blank" action="<?= base_url() . route_to('generate_rotulo') ?>" method="post">
+            <input type="hidden" name="ref_orderpw" value="<?= $orderpw->ref_orderpw ?>">
+            <button type="submit" class="btn btn-primary">Imprimir Rotulo</button>
+        </form>
     <?php endif; ?>
 </div>
