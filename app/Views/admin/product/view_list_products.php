@@ -30,9 +30,55 @@
 <div class="container-fluid mt--6">
     <div class="row justify-content-center">
         <div class="col-md-11">
+            <div class="card">
+                <div class="card-header bg-transparent">
+                    <h3 class="mb-0">Filtrar por</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row ">
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-username">Categoria</label>
+                                <div class="input-group my-colorpicker2">
+                                    <select name="categoria" id="select_categories" class="form-control" required="">
+                                        <option value="">* Categoria</option>
+                                        <option value="1">VESTIDOS CORTOS</option>
+                                        <option value="2">VESTIDOS LARGOS</option>
+                                        <option value="3">SETS</option>
+                                        <option value="4">BLUSAS</option>
+                                        <option value="5">ENTERIZOS</option>
+                                        <option value="6">JEANS</option>
+                                    </select>
+                                    <!-- <div id="more" class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-plus"></i></span>
+                                            </div> -->
+                                    <p style="color: red;"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label class="form-control-label">Nombre del producto</label>
+                                <input name="nombre" type="text" class="form-control" value="" required="">
+                                <p style="color: red;"></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3">
+                            <div class="form-group">
+                                <label class="form-control-label">Nombre del producto</label>
+                                <input name="nombre" type="text" class="form-control" value="" required="">
+                                <p style="color: red;"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-11">
             <div class="card bg-default shadow">
                 <div class="card-header bg-transparent border-0">
-                    <h3 class="text-white mb-0">Productos</h3>
+                    <h3 class="text-white mb-0">PRODUCTOS</h3>
                 </div>
                 <div class="table-responsive">
                     <table class="table align-items-center table-dark table-flush">
@@ -52,7 +98,7 @@
                                     <th scope="row">
                                         <div class="media align-items-center">
                                             <a href="#" class="avatar rounded-circle mr-3">
-                                                <img src="<?=base_url($product->getImages()[0]['path_thumb_image'])?>">
+                                                <img src="<?= base_url($product->getImages()[0]['path_thumb_image']) ?>">
                                             </a>
                                             <div class="media-body">
                                                 <span class="name mb-0 text-sm"><?= $product->name_product ?></span>
