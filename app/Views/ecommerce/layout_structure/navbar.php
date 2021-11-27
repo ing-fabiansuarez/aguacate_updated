@@ -69,7 +69,7 @@
                     <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav menu__list">
                             <li class="menu__item <?= $this->renderSection('nav_home') ?>"><a class="menu__link" href="<?= base_url() ?>">Inicio <span class="sr-only">(current)</span></a></li>
-                           <!--  <li class="menu__item <?= $this->renderSection('nav_new') ?>"><a class="menu__link" href="<?= base_url() . route_to('section_new_ecommerce') ?>">Nuevo</a></li> -->
+                            <!--  <li class="menu__item <?= $this->renderSection('nav_new') ?>"><a class="menu__link" href="<?= base_url() . route_to('section_new_ecommerce') ?>">Nuevo</a></li> -->
                             <li class="dropdown menu__item <?= $this->renderSection('vlargos') ?><?= $this->renderSection('vcortos') ?>">
                                 <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vestidos <span class="caret"></span></a>
                                 <ul class="dropdown-menu multi-column columns-3">
@@ -80,13 +80,14 @@
                                                 <li><a href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">Vestidos Cortos</a></li>
                                             </ul>
                                         </div>
-                                      
+
                                         <div class="clearfix"></div>
                                     </div>
                                 </ul>
                             </li>
                             <li class="menu__item <?= $this->renderSection('sets') ?>"><a class="menu__link" href="<?= base_url() . route_to('view_categories_section', 'sets') ?>">Sets</a></li>
                             <li class="menu__item <?= $this->renderSection('enterizos') ?>"><a class="menu__link" href="<?= base_url() . route_to('view_categories_section', 'enterizos') ?>">Enterizos</a></li>
+                            <li class="menu__item <?= $this->renderSection('blusas') ?>"><a class="menu__link" href="<?= base_url() . route_to('view_categories_section', 'blusas') ?>">Blusas</a></li>
                         </ul>
                     </div>
                 </div>

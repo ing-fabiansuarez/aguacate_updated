@@ -75,15 +75,31 @@
         <h3 style="padding-top: 2rem;" class="wthree_text_info"><span>Cada prenda es &uacute;nica</span> como t&uacute;</h3>
 
         <div class="col-md-5 bb-grids bb-middle-agileits-w3layouts">
+
             <a href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">
                 <div class="bb-middle-agileits-w3layouts grid">
                     <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category1-1.jpeg" alt=" " class="img-responsive" />
+                        <img src="assets/img/ecommerce/home/category-blusas.jpeg" alt=" " class="img-responsive" />
                         <figcaption>
-                            <h3><span>V</span>estidos Cortos </h3>
+                            <h3><span>B</span>lusas </h3>
                             <br><br>
                             <div class="btn-categories">
-                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">Los amo </a>
+                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'blusas') ?>">Las deseo </a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </a>
+            <a href="<?= base_url() . route_to('view_categories_section', 'vlargos') ?>">
+                <div class="bb-middle-agileits-w3layouts forth grid">
+
+                    <figure class="effect-roxy">
+                        <img src="assets/img/ecommerce/home/category2.jpg" alt=" " class="img-responsive" />
+                        <figcaption>
+                            <h3><span>S</span>ets </h3>
+                            <br><br>
+                            <div class="btn-categories">
+                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'sets') ?>">Los quiero </a>
                             </div>
                         </figcaption>
                     </figure>
@@ -109,12 +125,12 @@
             <a href="mens.html">
                 <div class="bb-middle-agileits-w3layouts grid">
                     <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category2.jpg" alt=" " class="img-responsive" />
+                        <img src="assets/img/ecommerce/home/category1-2.jpeg" alt=" " class="img-responsive" />
                         <figcaption>
-                            <h3><span>S</span>ets </h3>
+                            <h3><span>V</span>estidos Cortos </h3>
                             <br><br>
                             <div class="btn-categories">
-                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'sets') ?>">Los quiero </a>
+                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">Los amo </a>
                             </div>
                         </figcaption>
                     </figure>
@@ -128,7 +144,7 @@
                             <h3><span>E</span>nterizos </h3>
                             <br><br>
                             <div class="btn-categories">
-                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'enterizos') ?>">Las necesito </a>
+                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'enterizos') ?>">Los adoro </a>
                             </div>
                         </figcaption>
                     </figure>
