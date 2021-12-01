@@ -37,7 +37,7 @@ class ShoppingCartClass
     public function getPrices()
     {
         $totalPriceProducts = 0;
-        $freight = 0;
+        $freight = $this->sessionShoppingInfo['freight'];
         //se miran todos los productos que estan cargados en el carrito de compras
         foreach ($this->sessionShoppingCart as $item) {
             $product = $this->mdlProduct->find($item['id_product']);

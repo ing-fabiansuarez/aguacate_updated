@@ -89,6 +89,7 @@ class ShoppingInfo extends BaseController
                 'numIdent' => $numIdentification,
                 'phoneNumb' => $phoneNumber,
                 'email' => $email,
+                'freight' =>  $this->mdlCity->getcity($city)['price_typejourney']
             ];
 
             //save shippinginformation in session
@@ -126,7 +127,7 @@ class ShoppingInfo extends BaseController
         $city = $this->mdlCity->getcity($_SESSION['shoppinginformation']['city']);
         //CALCULAR EL FLETE
         /* $freight = $city['price_typejourney']; */
-        $freight = 0;
+        $freight = $_SESSION['shoppinginformation']['freight'];
 
         //PASAR LOS TARJETAS DE CREDITO
         $creditCard = $this->mdlPaymentMethod->where('type_paymentmethod_id', 1)
