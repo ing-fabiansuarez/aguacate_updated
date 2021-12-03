@@ -12,5 +12,7 @@ class Home extends BaseController
     public function link()
     {
         return view('others/link');
+
+        
     }
 }
