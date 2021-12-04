@@ -17,7 +17,7 @@
     </script> -->
     <!--//tags -->
     <link href="<?= base_url() ?>/assets/css/ecommerce/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="<?= base_url() ?>/assets/css/ecommerce/style5.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<?= base_url() ?>/assets/css/ecommerce/style4.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?= base_url() ?>/assets/css/ecommerce/font-awesome.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets/css/ecommerce/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
 
