@@ -70,19 +70,11 @@
                         <ul class="nav navbar-nav menu__list">
                             <li class="menu__item <?= $this->renderSection('nav_home') ?>"><a class="menu__link" href="<?= base_url() ?>">Inicio <span class="sr-only">(current)</span></a></li>
                             <!--  <li class="menu__item <?= $this->renderSection('nav_new') ?>"><a class="menu__link" href="<?= base_url() . route_to('section_new_ecommerce') ?>">Nuevo</a></li> -->
-                            <li class="dropdown menu__item <?= $this->renderSection('vlargos') ?><?= $this->renderSection('vcortos') ?>">
-                                <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Vestidos <span class="caret"></span></a>
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <div class="agile_inner_drop_nav_info">
-                                        <div class="col-sm-3 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a href="<?= base_url() . route_to('view_categories_section', 'vlargos') ?>">Vestidos Largos</a></li>
-                                                <li><a href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">Vestidos Cortos</a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="clearfix"></div>
-                                    </div>
+                            <li class="menu__item <?= $this->renderSection('vlargos') ?><?= $this->renderSection('vcortos') ?>">
+                                <a class="menu__link" href="#" class="dropdown-toggle" data-toggle="dropdown">Vestidos <b class="caret"></b></a>
+                                <ul class="dropdown-menu agile_short_dropdown">
+                                    <li><a href="<?= base_url() . route_to('view_categories_section', 'vlargos') ?>">Vestidos Largos</a></li>
+                                    <li><a href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">Vestidos Cortos</a></li>
                                 </ul>
                             </li>
                             <li class="menu__item <?= $this->renderSection('sets') ?>"><a class="menu__link" href="<?= base_url() . route_to('view_categories_section', 'sets') ?>">Sets</a></li>
@@ -107,7 +99,7 @@
             <div class="wthreecartaits wthreecartaits2 cart cart box_1">
                 <form action="<?= base_url() . route_to('shoppingcart') ?>" method="get">
                     <button type="submit" class="w3view-cart">
-                        <i style="font-size: 2.3rem;" class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                        <img style="max-height: 2.5rem;" src="<?= base_url() ?>/assets/img/icons/cart.png" alt="" class="img-fluid">
                     </button>
                 </form>
             </div>
