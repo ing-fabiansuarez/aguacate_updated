@@ -2,7 +2,7 @@
 <?= $this->section('title') ?>Producto<?= $this->endSection() ?>
 
 <?= $this->section('css') ?>
-<link rel="stylesheet" href="<?= base_url() ?>/assets/css/ecommerce/flexslider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?= base_url() ?>/assets/css/ecommerce/flexslider1.css" type="text/css" media="screen" />
 <?= $this->endSection() ?>
 
 <?= $this->section('js') ?>
