@@ -80,7 +80,7 @@
             <a href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">
                 <div class="bb-middle-agileits-w3layouts grid">
                     <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category-blusas.jpeg" alt=" " class="img-responsive" />
+                        <img src="assets/img/ecommerce/home/category-blusas-1.jpeg" alt=" " class="img-responsive" />
                         <figcaption>
                             <h3><span>B</span>lusas </h3>
                             <br><br>
@@ -95,7 +95,7 @@
                 <div class="bb-middle-agileits-w3layouts forth grid">
 
                     <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category1-2.jpeg" alt=" " class="img-responsive" />
+                        <img src="assets/img/ecommerce/home/category1-3.jpeg" alt=" " class="img-responsive" />
                         <figcaption>
                             <h3><span>V</span>estidos Cortos </h3>
                             <br><br>
@@ -109,7 +109,7 @@
             <a href="<?= base_url() . route_to('view_categories_section', 'vlargos') ?>">
                 <div class="bb-middle-agileits-w3layouts forth grid">
                     <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category4.jpg" alt=" " class="img-responsive">
+                        <img src="assets/img/ecommerce/home/category4-1.jpeg" alt=" " class="img-responsive">
                         <figcaption>
                             <h3><span>V</span>estidos Largos </h3>
                             <br><br>
@@ -126,7 +126,7 @@
             <a href="mens.html">
                 <div class="bb-middle-agileits-w3layouts grid">
                     <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category2.jpeg" alt=" " class="img-responsive" />
+                        <img src="assets/img/ecommerce/home/category2-1.jpeg" alt=" " class="img-responsive" />
                         <figcaption>
                             <h3><span>S</span>ets </h3>
                             <br><br>
@@ -140,7 +140,7 @@
             <a href="mens.html">
                 <div class="bb-middle-agileits-w3layouts forth grid">
                     <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category3.jpeg" alt=" " class="img-responsive">
+                        <img src="assets/img/ecommerce/home/category3-1.jpeg" alt=" " class="img-responsive">
                         <figcaption>
                             <h3><span>E</span>nterizos </h3>
                             <br><br>
