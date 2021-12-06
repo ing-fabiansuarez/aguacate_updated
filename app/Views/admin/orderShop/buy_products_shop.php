@@ -34,7 +34,7 @@
                     <h3 class="mb-0">Filtrar por</h3>
                 </div>
                 <div class="card-body">
-                    <form action="<?php base_url() . route_to('view_list_of_products') ?>" method="get">
+                    <form action="<?= base_url() . route_to('view_list_of_products') ?>" method="get">
                         <div class="row justify-content-center">
                             <div class="col-md-8">
                                 <label class="form-control-label" for="input-username">Seleccion por categoria</label>
@@ -75,59 +75,7 @@
                             <th scope="col" class="sort" data-sort="completion">Acciones</th>
                         </thead>
                         <tbody class="list">
-                            <?php foreach ($products as $product) : ?>
-                                <tr>
-                                    <th scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img src="<?= base_url($product->getImages()[0]['path_thumb_image']) ?>">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="name mb-0 text-sm"><?= $product->name_product ?></span>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="budget">
-                                        $ <?= number_format($product->price_product) ?>
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-dot mr-4">
-                                            <?php echo $product->quantityStockAnySize() ?>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr style="color:white">
-                                                        <th scope="col">Talla</th>
-                                                        <th scope="col">Cantidad</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($product->quantityStock() as $size) {
-                                                    ?>
-                                                        <tr style="color:white">
-                                                            <td><?php echo $size['name_size'] ?></td>
-                                                            <td><?php echo $size['quantity_stock'] ?></td>
-                                                        </tr>
-                                                    <?php
-                                                    } ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input active" aria-disabled="true" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->showpw_product) : ?> checked <?php endif; ?>>
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Estado</label>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->new_product) : ?> checked <?php endif; ?>>
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Nuevo</label>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                            
                         </tbody>
                     </table>
                 </div>

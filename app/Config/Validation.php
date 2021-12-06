@@ -62,6 +62,17 @@ class Validation
             ]
         ],
     ];
+    public $newClient = [
+        'nombre' => [
+            'rules'  => 'required|alpha_numeric_space',
+        ],
+        'apellido' => [
+            'rules'  => 'required|alpha_numeric_space',
+        ],
+        'xxxl' => [
+            'rules'  => 'numeric|permit_empty',
+        ],
+    ];
 
     public $newProduct = [
         'nombre' => [

@@ -88,6 +88,7 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
     $routes->group('pedidos', ['namespace' => 'App\Controllers\Admin\Orders', 'filter' => 'auth'], function ($routes) {
         $routes->get('diarios/(:segment)', 'Order::dailyOrders/$1', ['as' => 'view_daily_orders']);
         $routes->post('redirect', 'Order::redirectToDaylyOrders', ['as' => 'redirect_to_view_daily_orders']);
+        $routes->get('busqueda', 'Order::searchDocument', ['as' => 'view_search_orders']);
     });
 
     //categorias
@@ -103,6 +104,15 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
 
     $routes->group('api', ['namespace' => 'App\Controllers\Admin\ApiPrivate', 'filter' => 'auth'], function ($routes) {
         $routes->add('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
+    });
+
+    //Routes Ivan
+
+    //Clientes
+    $routes->group('cliente', ['namespace' => 'App\Controllers\Admin\Client', 'filter' => 'auth'], function ($routes) {
+        $routes->get('crear', 'Client::viewClient', ['as' => 'view_search_client']);
+        $routes->get('comprar', 'Client::searchClient', ['as' => 'buy_products_shop']);
+        $routes->post('registro', 'Client::registerClient', ['as' => 'register_client']);
     });
 });
 

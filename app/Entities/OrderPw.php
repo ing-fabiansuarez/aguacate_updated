@@ -36,6 +36,8 @@ class OrderPw extends Entity
             ->get()
             ->getFirstRow('array');
     }
+
+
     public function getPrices()
     {
         $totalPriceProducts = 0;
@@ -70,4 +72,5 @@ class OrderPw extends Entity
         }
         return $arrayResult;
     }
+
 }

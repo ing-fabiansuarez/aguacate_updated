@@ -195,8 +195,9 @@ class Product extends BaseController
 
     public function listProducts()
     {
+        $id_category=$this->request->getGet('categoria');
         return view('admin/product/view_list_products', [
-            'products' => $this->mdlProduct->findAll()
+            'products' => $this->mdlProduct->where('category_id',$id_category)->findAll()
         ]);
     }
 
@@ -204,4 +205,9 @@ class Product extends BaseController
     {
         return view('admin/product/view_search_product');
     }
+    /* public function changeEstado($id){
+        $id_category=$this->request->getId;
+        $this->mdlProduct->update
+        
+    } */
 }
