@@ -29,8 +29,27 @@ class Ajax extends BaseController
     public function getImagenes()
     {
         $id_product = $this->request->getPostGet('id_product');
-        return view('admin/api/view_images',[
-            'images'=> ($this->mdlProduct->find($id_product)->getImages())
+        return view('admin/api/view_images', [
+            'images' => ($this->mdlProduct->find($id_product)->getImages())
         ]);
+    }
+
+    public function changeNewProduct($id_product, $action)
+    {
+        $product = $this->mdlProduct->find($id_product);
+        switch ($action) {
+            case 1:
+                $product->new_product = true;
+                $this->mdlProduct->save($product);
+                echo "Guardado Los cambios Correctamente";
+                return;
+                break;
+            case 0:
+                $product->new_product = false;
+                $this->mdlProduct->save($product);
+                echo "Guardado Los cambios Correctamente";
+                return;
+                break;
+        }
     }
 }

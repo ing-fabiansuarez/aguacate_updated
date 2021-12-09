@@ -3,10 +3,14 @@
 <?= $this->section('listproduct') ?>active<?= $this->endSection() ?>
 
 <?= $this->section('css') ?>
+<!-- Toastr -->
+<link rel="stylesheet" href="<?= base_url() ?>/assets/plugins/toastr/toastr.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
 <?= $this->endSection() ?>
 
 <?= $this->section('js') ?>
+<!-- Toastr -->
+<script src="<?= base_url() ?>/assets/plugins/toastr/toastr.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -32,6 +36,29 @@
                     "next": "Siguiente",
                     "previous": "Anterior"
                 }
+            }
+        });
+
+    });
+
+    $(document).on('change', '#checkbox_new_product', function() {
+        rowTable = $(this).parents('tr');
+        idProduct = rowTable.find('td:eq(0)').text();
+        console.log(idProduct);
+        if ($(this).is(':checked')) {
+            action = 1;
+        } else {
+            action = 0;
+        }
+        //aqui vamos en para que se actualice 
+        $.ajax({
+            url: "<?= base_url('administracion/api/changenewproduct') ?>/" + idProduct + "/" + action,
+            type: "POST",
+            success: function(data1) {
+                toastr.success(data1);
+            },
+            error: function() {
+                toastr.error("No hay internet, no se ha podido conectar al servidor.");
             }
         });
     });
@@ -114,7 +141,7 @@
                                                 <strong><?= session('msg.title') ?></strong> <?= session('msg.body') ?>
                                             </div>
                                         <?php endif; ?>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -165,11 +192,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input active" aria-disabled="true" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->showpw_product) : ?> checked <?php endif; ?>>
-                                                        <label class="form-check-label" for="flexSwitchCheckChecked">Estado</label>
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->new_product) : ?> checked <?php endif; ?>>
-                                                        <label class="form-check-label" for="flexSwitchCheckChecked">Nuevo</label>
+                                                        <input id="checkbox_new_product" class="form-check-input active" aria-disabled="true" type="checkbox" role="switch" <?php if ($product->new_product) : ?> checked <?php endif; ?>>
+                                                        <label class="form-check-label">Nuevo</label>
                                                     </div>
                                                 </td>
                                                 <td>

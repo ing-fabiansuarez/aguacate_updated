@@ -108,6 +108,7 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
     $routes->group('api', ['namespace' => 'App\Controllers\Admin\ApiPrivate', 'filter' => 'auth'], function ($routes) {
         $routes->add('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
         $routes->add('getimages', 'Ajax::getImagenes', ['as' => 'ajax_get_images_product']);
+        $routes->add('changenewproduct/(:segment)/(:segment)', 'Ajax::changeNewProduct/$1/$2', ['as' => 'ajax_change_new_product']);
     });
 
     //Routes Ivan
