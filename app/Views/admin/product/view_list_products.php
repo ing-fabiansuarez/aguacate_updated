@@ -1,18 +1,44 @@
 <?= $this->extend('admin/layout_structure/main_view') ?>
 <?= $this->section('title') ?>Listado de productos<?= $this->endSection() ?>
 <?= $this->section('listproduct') ?>active<?= $this->endSection() ?>
+
 <?= $this->section('css') ?>
-<link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
 <?= $this->endSection() ?>
+
 <?= $this->section('js') ?>
-<!-- DATATABLE DE PRODUCTAOS -->
-<script src="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#tabla1').DataTable();
+        $('#table_products').DataTable({
+            pageLength: 100,
+            ordering: false,
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        });
     });
 </script>
 <?= $this->endSection() ?>
+
+
 
 
 <?= $this->section('content') ?>
@@ -42,36 +68,6 @@
                 <div class="card-header bg-transparent">
                     <h3 class="mb-0">Filtrar por</h3>
                 </div>
-                <table name="tabla1" id="tabla1" class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
                 <div class="card-body">
                     <form action="<?php base_url() . route_to('view_list_of_products') ?>" method="get">
                         <div class="row justify-content-center">
@@ -92,76 +88,133 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-11">
-            <div class="card bg-default shadow">
-                <div class="card-header bg-transparent border-0">
-                    <h3 class="text-white mb-0" style="text-align: center;">PRODUCTOS</h3>
-                </div>
-                <div class="table-responsive">
-                    <table id="myTable" class="table align-items-center table-dark table-flush">
-                        <thead class="thead-dark" style="text-align: center;">
-                            <th scope="col" class="sort" data-sort="name">Codigo</th>
-                            <th scope="col" class="sort" data-sort="name">PRODUCTO</th>
-                            <th scope="col" class="sort" data-sort="budget">Precio</th>
-                            <th scope="col" class="sort" data-sort="status">Existencias X Talla</th>
-                            <th scope="col" class="sort" data-sort="completion">Acciones</th>
-                        </thead>
-                        <tbody class="list">
-                            <?php foreach ($products as $product) : ?>
-                                <tr>
-                                    <th><?= $product->id_product ?></th>
-                                    <th scope="row">
-                                        <div class="media align-items-center">
-                                            <a href="#" class="avatar rounded-circle mr-3">
-                                                <img src="<?= base_url($product->getImages()[0]['path_thumb_image']) ?>">
-                                            </a>
-                                            <div class="media-body">
-                                                <span class="name mb-0 text-sm"><?= $product->name_product ?></span>
+                    <div class="table-responsive">
+                        <table id="table_products" class="table table-hover align-items-center table-flush">
+                            <thead class="thead-light">
+                                <th scope="col">Codigo</th>
+                                <th scope="col" class="sort" data-sort="name">PRODUCTO</th>
+                                <th scope="col" class="sort" data-sort="budget">Precio</th>
+                                <th scope="col" class="sort" data-sort="status">Existencias X Talla</th>
+                                <th scope="col" class="sort" data-sort="completion">Acciones</th>
+                            </thead>
+                            <tbody class="list">
+                                <?php foreach ($products as $product) : ?>
+                                    <tr style="border-style: hidden;">
+                                        <th><?= $product->id_product ?></th>
+                                        <th scope="row">
+                                            <div class="media align-items-center">
+                                                <a href="#" class="avatar rounded-circle mr-3">
+                                                    <img src="<?= base_url($product->getImages()[0]['path_thumb_image']) ?>">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm"><?= $product->name_product ?></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </th>
-                                    <td class="budget">
-                                        $ <?= number_format($product->price_product) ?>
-                                    </td>
-                                    <td>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr style="color:white">
-                                                        <th scope="col">Talla</th>
-                                                        <th scope="col">Cantidad</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($product->quantityStock() as $size) {
-                                                    ?>
-                                                        <tr style="color:white">
-                                                            <td><?php echo $size['name_size'] ?></td>
-                                                            <td><?php echo $size['quantity_stock'] ?></td>
+                                        </th>
+                                        <td class="budget">
+                                            $ <?= number_format($product->price_product) ?>
+                                        </td>
+                                        <td>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Talla</th>
+                                                            <th scope="col">Cantidad</th>
                                                         </tr>
-                                                    <?php
-                                                    } ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input active" aria-disabled="true" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->showpw_product) : ?> checked <?php endif; ?>>
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Estado</label>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->new_product) : ?> checked <?php endif; ?>>
-                                            <label class="form-check-label" for="flexSwitchCheckChecked">Nuevo</label>
-                                        </div>
-                                    </td>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach ($product->quantityStock() as $size) {
+                                                        ?>
+                                                            <tr>
+                                                                <td><?php echo $size['name_size'] ?></td>
+                                                                <td><?php echo $size['quantity_stock'] ?></td>
+                                                            </tr>
+                                                        <?php
+                                                        } ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input active" aria-disabled="true" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->showpw_product) : ?> checked <?php endif; ?>>
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Estado</label>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->new_product) : ?> checked <?php endif; ?>>
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Nuevo</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Light table -->
+                    <div class="table-responsive">
+                        <table id="table_orders" class="table table-hover align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Codigo</th>
+                                    <th scope="col">PRODUCTO</th>
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Existencias X Talla</th>
+                                    <th scope="col">Acciones</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="list">
+                                <?php foreach ($products as $product) : ?>
+                                    <tr id="row_table">
+                                        <th><?= $product->id_product ?></th>
+                                        <th>
+                                            <div class="media align-items-center">
+                                                <a href="#" class="avatar rounded-circle mr-3">
+                                                    <img src="<?= base_url($product->getImages()[0]['path_thumb_image']) ?>">
+                                                </a>
+                                                <div class="media-body">
+                                                    <span class="name mb-0 text-sm"><?= $product->name_product ?></span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            $ <?= number_format($product->price_product) ?>
+                                        </td>
+                                        <td>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Talla</th>
+                                                            <th scope="col">Cantidad</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach ($product->quantityStock() as $size) {
+                                                        ?>
+                                                            <tr>
+                                                                <td><?php echo $size['name_size'] ?></td>
+                                                                <td><?php echo $size['quantity_stock'] ?></td>
+                                                            </tr>
+                                                        <?php
+                                                        } ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input active" aria-disabled="true" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->showpw_product) : ?> checked <?php endif; ?>>
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Estado</label>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php if ($product->new_product) : ?> checked <?php endif; ?>>
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Nuevo</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
