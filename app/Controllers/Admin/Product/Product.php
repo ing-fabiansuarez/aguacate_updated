@@ -195,9 +195,11 @@ class Product extends BaseController
 
     public function listProducts()
     {
-        $id_category=$this->request->getGet('categoria');
+        $id_category = $this->request->getGet('categoria');
         return view('admin/product/view_list_products', [
-            'products' => $this->mdlProduct->where('category_id',$id_category)->findAll()
+            'products' => $this->mdlProduct->where('category_id', $id_category)->findAll(),
+            'categories' =>  $this->mdlCategory->findAll(),
+            'id_category' => $id_category
         ]);
     }
 

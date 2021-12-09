@@ -1,10 +1,19 @@
 <?= $this->extend('admin/layout_structure/main_view') ?>
 <?= $this->section('title') ?>Listado de productos<?= $this->endSection() ?>
 <?= $this->section('listproduct') ?>active<?= $this->endSection() ?>
-<?= $this->section('js') ?>
-
-
+<?= $this->section('css') ?>
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 <?= $this->endSection() ?>
+<?= $this->section('js') ?>
+<!-- DATATABLE DE PRODUCTAOS -->
+<script src="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"></script>
+<script>
+    $(document).ready(function() {
+        $('#tabla1').DataTable();
+    });
+</script>
+<?= $this->endSection() ?>
+
 
 <?= $this->section('content') ?>
 <div class="header bg-primary pb-6">
@@ -33,6 +42,36 @@
                 <div class="card-header bg-transparent">
                     <h3 class="mb-0">Filtrar por</h3>
                 </div>
+                <table name="tabla1" id="tabla1" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="card-body">
                     <form action="<?php base_url() . route_to('view_list_of_products') ?>" method="get">
                         <div class="row justify-content-center">
@@ -41,12 +80,9 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <select name="categoria" id="select_categories" class="form-select" required="">
-                                            <option value="1" selected>VESTIDOS CORTOS</option>
-                                            <option value="2">VESTIDOS LARGOS</option>
-                                            <option value="3">SETS</option>
-                                            <option value="4">BLUSAS</option>
-                                            <option value="5">ENTERIZOS</option>
-                                            <option value="6">JEANS</option>
+                                            <?php foreach ($categories as $category) : ?>
+                                                <option value="<?= $category['id_category'] ?>" <?php if ($category['id_category'] == $id_category) : ?> selected <?php endif; ?>><?= $category['name_category'] ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                     <div class="col-md-4">
@@ -66,17 +102,18 @@
                     <h3 class="text-white mb-0" style="text-align: center;">PRODUCTOS</h3>
                 </div>
                 <div class="table-responsive">
-                    <table class="table align-items-center table-dark table-flush">
+                    <table id="myTable" class="table align-items-center table-dark table-flush">
                         <thead class="thead-dark" style="text-align: center;">
+                            <th scope="col" class="sort" data-sort="name">Codigo</th>
                             <th scope="col" class="sort" data-sort="name">PRODUCTO</th>
                             <th scope="col" class="sort" data-sort="budget">Precio</th>
-                            <th scope="col" class="sort" data-sort="status">Existencias</th>
                             <th scope="col" class="sort" data-sort="status">Existencias X Talla</th>
                             <th scope="col" class="sort" data-sort="completion">Acciones</th>
                         </thead>
                         <tbody class="list">
                             <?php foreach ($products as $product) : ?>
                                 <tr>
+                                    <th><?= $product->id_product ?></th>
                                     <th scope="row">
                                         <div class="media align-items-center">
                                             <a href="#" class="avatar rounded-circle mr-3">
@@ -89,11 +126,6 @@
                                     </th>
                                     <td class="budget">
                                         $ <?= number_format($product->price_product) ?>
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-dot mr-4">
-                                            <?php echo $product->quantityStockAnySize() ?>
-                                        </span>
                                     </td>
                                     <td>
                                         <div class="table-responsive">
