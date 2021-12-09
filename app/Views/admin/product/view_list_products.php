@@ -11,7 +11,7 @@
 <script>
     $(document).ready(function() {
         $('#table_products').DataTable({
-            pageLength: 100,
+            pageLength: 10,
             ordering: false,
             language: {
                 "decimal": "",
@@ -35,11 +35,32 @@
             }
         });
     });
+
+    $(document).on("click", "#image_product", function() {
+        $("#modal_images").modal("show");
+        $("#modal-body div").remove();
+        rowTable = $(this).parents('tr');
+        idProduct = rowTable.find('td:eq(0)').text();
+
+        $.ajax({
+            url: "<?= base_url() . route_to('ajax_get_images_product') ?>",
+            type: "POST",
+            data: {
+                id_product: idProduct,
+            },
+            success: function(data1) {
+                $("#content_modal").html(data1);
+                $("#title_modal_imagen").text(idProduct);
+            },
+            error: function() {
+                toastr.error("No hay internet, no se ha podido conectar al servidor.");
+            }
+        });
+
+    });
 </script>
+
 <?= $this->endSection() ?>
-
-
-
 
 <?= $this->section('content') ?>
 <div class="header bg-primary pb-6">
@@ -60,10 +81,13 @@
         </div>
     </div>
 </div>
+
 <!-- Page content -->
 <div class="container-fluid mt--6">
     <div class="row justify-content-center">
         <div class="col-md-11">
+
+
             <div class="card">
                 <div class="card-header bg-transparent">
                     <h3 class="mb-0">Filtrar por</h3>
@@ -71,18 +95,26 @@
                 <div class="card-body">
                     <form action="<?php base_url() . route_to('view_list_of_products') ?>" method="get">
                         <div class="row justify-content-center">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <label class="form-control-label" for="input-username">Seleccion por categoria</label>
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-4">
                                         <select name="categoria" id="select_categories" class="form-select" required="">
                                             <?php foreach ($categories as $category) : ?>
                                                 <option value="<?= $category['id_category'] ?>" <?php if ($category['id_category'] == $id_category) : ?> selected <?php endif; ?>><?= $category['name_category'] ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <button type="submit" class="btn btn-round btn-primary">Buscar</button>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <?php if (session('msg.class')) : ?>
+                                            <div class="alert <?= session('msg.class') ?>">
+                                                <strong><?= session('msg.title') ?></strong> <?= session('msg.body') ?>
+                                            </div>
+                                        <?php endif; ?>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -101,15 +133,16 @@
                                             <th scope="col">Precio</th>
                                             <th scope="col">Existencias X Talla</th>
                                             <th scope="col">Acciones</th>
+                                            <th scope="col">Desactivar</th>
                                         </tr>
                                     </thead>
                                     <tbody class="list">
                                         <?php foreach ($products as $product) : ?>
-                                            <tr id="row_table">
-                                                <th><?= $product->id_product ?></th>
+                                            <tr>
+                                                <td id="codigo"><?= $product->id_product ?></td>
                                                 <th>
                                                     <div class="media align-items-center">
-                                                        <a href="#" class="avatar rounded-circle mr-3">
+                                                        <a id="image_product" class="avatar rounded-circle mr-3">
                                                             <img src="<?= base_url($product->getImages()[0]['path_thumb_image']) ?>">
                                                         </a>
                                                         <div class="media-body">
@@ -139,6 +172,14 @@
                                                         <label class="form-check-label" for="flexSwitchCheckChecked">Nuevo</label>
                                                     </div>
                                                 </td>
+                                                <td>
+                                                    <form action="<?= base_url() . route_to('disable_product') ?>" method="post">
+                                                        <input type="hidden" name="id_product" value="<?= $product->id_product ?>">
+                                                        <button id="btn_delete_employee" type="submit" class="btn btn-app bg-delete">
+                                                            <i style="color: red;" class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -151,4 +192,28 @@
             </div>
         </div>
     </div>
-    <?= $this->endSection() ?>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_images" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title_modal_imagen">Imagen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div id="content_modal">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<?= $this->endSection() ?>

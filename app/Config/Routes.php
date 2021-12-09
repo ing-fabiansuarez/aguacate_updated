@@ -82,6 +82,8 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
         $routes->post('crear', 'Product::create', ['as' => 'create_product']);
         $routes->get('listado', 'Product::listProducts', ['as' => 'view_list_of_products']);
         $routes->get('buscar', 'Product::searchProduct', ['as' => 'view_search_products']);
+        //fabian
+        $routes->post('disable', 'Product::disable', ['as' => 'disable_product']);
     });
 
     //ORDERS
@@ -102,8 +104,10 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
         $routes->post('rotulo', 'Rotulo::index', ['as' => 'generate_rotulo']);
     });
 
+    //ajax administrador
     $routes->group('api', ['namespace' => 'App\Controllers\Admin\ApiPrivate', 'filter' => 'auth'], function ($routes) {
         $routes->add('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
+        $routes->add('getimages', 'Ajax::getImagenes', ['as' => 'ajax_get_images_product']);
     });
 
     //Routes Ivan

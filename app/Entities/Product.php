@@ -57,4 +57,10 @@ class Product extends Entity
             ->where('stock.product_id',$this->id_product)
             ->get()->getResultArray();
     }
+
+    //fabian
+    public function disable(){
+        //calmbia el campo active de la tabla de la base de datos, (desabilita el producto)
+        $this->active_product = false;
+    }
 }
