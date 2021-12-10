@@ -109,6 +109,7 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
         $routes->add('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
         $routes->add('getimages', 'Ajax::getImagenes', ['as' => 'ajax_get_images_product']);
         $routes->add('changenewproduct/(:segment)/(:segment)', 'Ajax::changeNewProduct/$1/$2', ['as' => 'ajax_change_new_product']);
+        $routes->add('changeshowproduct/(:segment)/(:segment)', 'Ajax::changeShowProduct/$1/$2', ['as' => 'ajax_change_show_product']);
     });
 
     //Routes Ivan

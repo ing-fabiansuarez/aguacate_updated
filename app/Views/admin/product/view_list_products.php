@@ -63,6 +63,30 @@
         });
     });
 
+
+    $(document).on('change', '#checkbox_show_pw', function() {
+        rowTable = $(this).parents('tr');
+        idProduct = rowTable.find('td:eq(0)').text();
+        console.log(idProduct);
+        if ($(this).is(':checked')) {
+            action = 1;
+        } else {
+            action = 0;
+        }
+        //aqui vamos en para que se actualice 
+        $.ajax({
+            url: "<?= base_url('administracion/api/changeshowproduct') ?>/" + idProduct + "/" + action,
+            type: "POST",
+            success: function(data1) {
+                toastr.success(data1);
+            },
+            error: function() {
+                toastr.error("No hay internet, no se ha podido conectar al servidor.");
+            }
+        });
+    });
+
+
     $(document).on("click", "#image_product", function() {
         $("#modal_images").modal("show");
         $("#modal-body div").remove();
@@ -159,7 +183,8 @@
                                             <th scope="col">PRODUCTO</th>
                                             <th scope="col">Precio</th>
                                             <th scope="col">Existencias X Talla</th>
-                                            <th scope="col">Acciones</th>
+                                            <th scope="col">Ver Pag Web</th>
+                                            <th scope="col">Nuevo</th>
                                             <th scope="col">Desactivar</th>
                                         </tr>
                                     </thead>
@@ -189,6 +214,12 @@
                                                             </li>
                                                         <?php } ?>
                                                     </ul>
+                                                </td>
+                                                <td>
+                                                    <div class="form-check form-switch">
+                                                        <input id="checkbox_show_pw" class="form-check-input active" aria-disabled="true" type="checkbox" role="switch" <?php if ($product->showpw_product) : ?> checked <?php endif; ?>>
+                                                        <label class="form-check-label">Ver</label>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <div class="form-check form-switch">

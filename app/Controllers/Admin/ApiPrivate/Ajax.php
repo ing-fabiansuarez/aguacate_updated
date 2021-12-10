@@ -52,4 +52,23 @@ class Ajax extends BaseController
                 break;
         }
     }
+
+    public function changeShowProduct($id_product, $action)
+    {
+        $product = $this->mdlProduct->find($id_product);
+        switch ($action) {
+            case 1:
+                $product->showpw_product = true;
+                $this->mdlProduct->save($product);
+                echo "Guardado Correctamente";
+                return;
+                break;
+            case 0:
+                $product->showpw_product = false;
+                $this->mdlProduct->save($product);
+                echo "Guardado Correctamente";
+                return;
+                break;
+        }
+    }
 }
