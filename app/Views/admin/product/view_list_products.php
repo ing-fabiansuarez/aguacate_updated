@@ -111,6 +111,31 @@
     });
 </script>
 
+<!-- SCRIPT PARA EL INPUT DE PRECIO EN LA TABLA -->
+<script>
+    let timeout
+
+    $(document).on("keydown", "#comment", function() {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            rowTable = $(this).parents('tr');
+            idProduct = rowTable.find('td:eq(0)').text();
+            action = rowTable.find('td:eq(1)').find(':input').val();
+            $.ajax({
+                url: "<?= base_url('administracion/api/changepriceproduct') ?>/" + idProduct + "/" + action,
+                type: "POST",
+                success: function(data1) {
+                    toastr.success(data1);
+                },
+                error: function() {
+                    toastr.error("No hay internet, no se ha podido conectar al servidor u ocurrio un error.");
+                }
+            });
+            clearTimeout(timeout)
+        }, 1000);
+    });
+</script>
+
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -136,9 +161,7 @@
 <!-- Page content -->
 <div class="container-fluid mt--6">
     <div class="row justify-content-center">
-        <div class="col-md-11">
-
-
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header bg-transparent">
                     <h3 class="mb-0">Filtrar por</h3>
@@ -203,7 +226,7 @@
                                                     </div>
                                                 </th>
                                                 <td>
-                                                    $ <?= number_format($product->price_product) ?>
+                                                    $ <input type="number" id="comment" value="<?= $product->price_product ?>">
                                                 </td>
                                                 <td>
                                                     <ul class="list-group">

@@ -5,6 +5,7 @@ namespace App\Controllers\Admin\ApiPrivate;
 use App\Controllers\BaseController;
 use App\Models\OrderPwModel;
 use App\Models\ProductModel;
+use Exception;
 
 class Ajax extends BaseController
 {
@@ -70,5 +71,14 @@ class Ajax extends BaseController
                 return;
                 break;
         }
+    }
+
+    public function changePriceProduct($id_product, $price)
+    {
+        $product = $this->mdlProduct->find($id_product);
+        $product->price_product = $price;
+        $this->mdlProduct->save($product);
+        echo "Se cambio el precio Correctamente";
+        return;
     }
 }

@@ -106,10 +106,11 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
 
     //ajax administrador
     $routes->group('api', ['namespace' => 'App\Controllers\Admin\ApiPrivate', 'filter' => 'auth'], function ($routes) {
-        $routes->add('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
-        $routes->add('getimages', 'Ajax::getImagenes', ['as' => 'ajax_get_images_product']);
-        $routes->add('changenewproduct/(:segment)/(:segment)', 'Ajax::changeNewProduct/$1/$2', ['as' => 'ajax_change_new_product']);
-        $routes->add('changeshowproduct/(:segment)/(:segment)', 'Ajax::changeShowProduct/$1/$2', ['as' => 'ajax_change_show_product']);
+        $routes->post('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
+        $routes->post('getimages', 'Ajax::getImagenes', ['as' => 'ajax_get_images_product']);
+        $routes->post('changenewproduct/(:segment)/(:num)', 'Ajax::changeNewProduct/$1/$2', ['as' => 'ajax_change_new_product']);
+        $routes->post('changeshowproduct/(:segment)/(:num)', 'Ajax::changeShowProduct/$1/$2', ['as' => 'ajax_change_show_product']);
+        $routes->post('changepriceproduct/(:segment)/(:num)', 'Ajax::changePriceProduct/$1/$2', ['as' => 'ajax_change_price_product']);
     });
 
     //Routes Ivan
