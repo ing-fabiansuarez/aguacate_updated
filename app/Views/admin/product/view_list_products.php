@@ -58,7 +58,10 @@
                 toastr.success(data1);
             },
             error: function() {
-                toastr.error("No hay internet, no se ha podido conectar al servidor.");
+                toastr.error("No hay internet, no se ha podido conectar al servidor u ocurrio un error.");
+                setTimeout(function() {
+                    window.location.reload();
+                }, 2000);
             }
         });
     });
@@ -81,7 +84,10 @@
                 toastr.success(data1);
             },
             error: function() {
-                toastr.error("No hay internet, no se ha podido conectar al servidor.");
+                toastr.error("No hay internet, no se ha podido conectar al servidor u ocurrio un error.");
+                setTimeout(function() {
+                    window.location.reload();
+                }, 2000);
             }
         });
     });
@@ -104,7 +110,10 @@
                 $("#title_modal_imagen").text(idProduct);
             },
             error: function() {
-                toastr.error("No hay internet, no se ha podido conectar al servidor.");
+                toastr.error("No hay internet, no se ha podido conectar al servidor u ocurrio un error.");
+                setTimeout(function() {
+                    window.location.reload();
+                }, 2000);
             }
         });
 
@@ -129,9 +138,52 @@
                 },
                 error: function() {
                     toastr.error("No hay internet, no se ha podido conectar al servidor u ocurrio un error.");
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 2000);
                 }
             });
             clearTimeout(timeout)
+        }, 1000);
+    });
+</script>
+
+<!-- SCRIPT PARA EL INPUT DE STOCK -->
+<script>
+    let timeola
+    $(document).on("keydown", "#input_stock", function() {
+        clearTimeout(timeola)
+        timeola = setTimeout(() => {
+
+            rowTable = $(this).parents('tr');
+            idProduct = rowTable.find('td:eq(0)').text();
+            talla = $(this).parents('li').find('#id_size').text();
+            cantidad = $(this).parents('li').find('#input_stock').val();
+
+            $.ajax({
+                url: "<?= base_url() . route_to('ajax_change_stock_product') ?>",
+                type: "POST",
+                data: {
+                    ref_producto: idProduct,
+                    talla: talla,
+                    cantidad: cantidad,
+                },
+                dataType: "json",
+                success: function(data1) {
+                    if (data1['status'] == "error") {
+                        toastr.error(data1['msg']);
+                    } else if (data1['status'] == "ok") {
+                        toastr.success(data1['msg']);
+                    }
+                },
+                error: function() {
+                    toastr.error("No hay internet, no se ha podido conectar al servidor u ocurrio un error.");
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 2000);
+                }
+            });
+            clearTimeout(timeola)
         }, 1000);
     });
 </script>
@@ -232,8 +284,9 @@
                                                     <ul class="list-group">
                                                         <?php foreach ($product->quantityStock() as $size) { ?>
                                                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                                <?= $size['name_size'] ?>
-                                                                <span class="badge badge-primary badge-pill"><?= $size['quantity_stock'] ?></span>
+                                                                <b id="name_size"><?= $size['name_size'] ?></b>
+                                                                <b hidden id="id_size"><?= $size['id_size'] ?></b>
+                                                                <span class="badge badge-primary badge-pill"><input id="input_stock" style="max-width: 40px; border: none; background: transparent;" type="text" value="<?= $size['quantity_stock'] ?>"></span>
                                                             </li>
                                                         <?php } ?>
                                                     </ul>

@@ -111,6 +111,7 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
         $routes->post('changenewproduct/(:segment)/(:num)', 'Ajax::changeNewProduct/$1/$2', ['as' => 'ajax_change_new_product']);
         $routes->post('changeshowproduct/(:segment)/(:num)', 'Ajax::changeShowProduct/$1/$2', ['as' => 'ajax_change_show_product']);
         $routes->post('changepriceproduct/(:segment)/(:num)', 'Ajax::changePriceProduct/$1/$2', ['as' => 'ajax_change_price_product']);
+        $routes->post('changestock', 'Ajax::changeStock', ['as' => 'ajax_change_stock_product']);
     });
 
     //Routes Ivan

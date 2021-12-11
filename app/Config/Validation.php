@@ -40,7 +40,7 @@ class Validation
     //--------------------------------------------------------------------
     // Rules
     //--------------------------------------------------------------------
-
+    //fabian
     public $loginForm = [
         'usuario' => [
             'rules'  => 'required|numeric|is_not_unique[user.id_user]',
@@ -53,7 +53,7 @@ class Validation
             'rules'  => 'required',
         ],
     ];
-
+    //fabian
     public $newCategory = [
         'nombre' => [
             'rules'  => 'required',
@@ -62,6 +62,7 @@ class Validation
             ]
         ],
     ];
+    //fabian
     public $newClient = [
         'nombre' => [
             'rules'  => 'required|alpha_numeric_space',
@@ -73,7 +74,7 @@ class Validation
             'rules'  => 'numeric|permit_empty',
         ],
     ];
-
+    //fabian
     public $newProduct = [
         'nombre' => [
             'rules'  => 'required|alpha_numeric_space',
@@ -127,7 +128,7 @@ class Validation
             'rules'  => 'numeric|permit_empty',
         ],
     ];
-
+    //fabian
     public $validateShippInfoEcommerce = [
         'ciudad' => [
             'rules'  => 'required|is_not_unique[city.idcity]',
@@ -155,6 +156,18 @@ class Validation
         ],
         'email' => [
             'rules'  => 'required|valid_email',
+        ],
+    ];
+    //fabian
+    public $changeStock = [
+        'ref_producto' => [
+            'rules'  => 'required|is_not_unique[product.id_product]',
+        ],
+        'talla' => [
+            'rules'  => 'required|is_not_unique[size.id_size]',
+        ],
+        'cantidad' => [
+            'rules'  => 'required|numeric',
         ],
     ];
 }
