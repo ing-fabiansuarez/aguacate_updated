@@ -2,7 +2,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header  align-items-center">
-            <a class="navbar-brand" href="<?=base_url().route_to('admin_page_home')?>">
+            <a class="navbar-brand" href="<?= base_url() . route_to('admin_page_home') ?>">
                 <img src="<?= base_url() ?>/assets/img/corporative/logonegro.png" class="navbar-brand-img"><br>
                 <img src="<?= base_url() ?>/assets/img/corporative/aguacate.png" class="navbar-brand-img">
             </a>
@@ -43,10 +43,18 @@
                             <span class="nav-link-text">Buscar Producto</span>
                         </a>
                     </li>
+                </ul>
+
+                <hr class="my-3">
+
+                <h6 class="navbar-heading p-0 text-muted">
+                    <span class="docs-normal">PEDIDOS PAGINA WEB</span>
+                </h6>
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link <?= $this->renderSection('listorderdaily') ?>" href="<?= base_url() . route_to('view_daily_orders', date("Y-m-d")) ?>">
                             <i class="fas fa-clipboard-list text-default"></i>
-                            <span class="nav-link-text">Pedidos Diarios</span>
+                            <span class="nav-link-text">Pedidos</span>
                         </a>
                     </li>
                 </ul>
@@ -54,7 +62,7 @@
                 <hr class="my-3">
 
                 <h6 class="navbar-heading p-0 text-muted">
-                    <span class="docs-normal">PEDIDOS</span>
+                    <span class="docs-normal">PEDIDOS WHATSAPP Y TIENDA</span>
                 </h6>
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -64,7 +72,6 @@
                         </a>
                     </li>
                 </ul>
-
 
 
                 <hr class="my-3">
