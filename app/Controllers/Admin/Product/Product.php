@@ -8,7 +8,6 @@ use App\Models\ImageModel;
 use App\Models\ProductModel;
 use App\Models\ProductSizeModel;
 use App\Models\StockModel;
-use Exception;
 
 class Product extends BaseController
 {
@@ -195,13 +194,31 @@ class Product extends BaseController
 
     public function listProducts()
     {
+        $id_category = $this->request->getGet('categoria');
         return view('admin/product/view_list_products', [
-            'products' => $this->mdlProduct->findAll()
+            'products' => $this->mdlProduct->where('category_id', $id_category)->where('active_product', true)->findAll(),
+            'categories' =>  $this->mdlCategory->findAll(),
+            'id_category' => $id_category
         ]);
     }
 
     public function searchProduct()
     {
         return view('admin/product/view_search_product');
+    }
+
+    //fabian
+    public function disable()
+    {
+        $id_product = $this->request->getPost('id_product');
+        d($id_product);
+        $product = $this->mdlProduct->find($id_product);
+        $product->disable();
+        $this->mdlProduct->save($product);
+        return redirect()->back()->with('msg', [
+            'title' => 'Deshabilitado!',
+            'class' => 'alert-success',
+            'body' => 'Se deshabilito correctamente el producto ' . $id_product . '<a target="_blank" href="' . base_url() . route_to('view_single_product') . '?id=' . $id_product . '"> Ver Producto</a>'
+        ]);
     }
 }

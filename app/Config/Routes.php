@@ -82,12 +82,15 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
         $routes->post('crear', 'Product::create', ['as' => 'create_product']);
         $routes->get('listado', 'Product::listProducts', ['as' => 'view_list_of_products']);
         $routes->get('buscar', 'Product::searchProduct', ['as' => 'view_search_products']);
+        //fabian
+        $routes->post('disable', 'Product::disable', ['as' => 'disable_product']);
     });
 
     //ORDERS
     $routes->group('pedidos', ['namespace' => 'App\Controllers\Admin\Orders', 'filter' => 'auth'], function ($routes) {
         $routes->get('diarios/(:segment)', 'Order::dailyOrders/$1', ['as' => 'view_daily_orders']);
         $routes->post('redirect', 'Order::redirectToDaylyOrders', ['as' => 'redirect_to_view_daily_orders']);
+        $routes->get('busqueda', 'Order::searchDocument', ['as' => 'view_search_orders']);
     });
 
     //categorias
@@ -101,8 +104,23 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
         $routes->post('rotulo', 'Rotulo::index', ['as' => 'generate_rotulo']);
     });
 
+    //ajax administrador
     $routes->group('api', ['namespace' => 'App\Controllers\Admin\ApiPrivate', 'filter' => 'auth'], function ($routes) {
-        $routes->add('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
+        $routes->post('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
+        $routes->post('getimages', 'Ajax::getImagenes', ['as' => 'ajax_get_images_product']);
+        $routes->post('changenewproduct/(:segment)/(:num)', 'Ajax::changeNewProduct/$1/$2', ['as' => 'ajax_change_new_product']);
+        $routes->post('changeshowproduct/(:segment)/(:num)', 'Ajax::changeShowProduct/$1/$2', ['as' => 'ajax_change_show_product']);
+        $routes->post('changepriceproduct/(:segment)/(:num)', 'Ajax::changePriceProduct/$1/$2', ['as' => 'ajax_change_price_product']);
+        $routes->post('changestock', 'Ajax::changeStock', ['as' => 'ajax_change_stock_product']);
+    });
+
+    //Routes Ivan
+
+    //Clientes
+    $routes->group('cliente', ['namespace' => 'App\Controllers\Admin\Client', 'filter' => 'auth'], function ($routes) {
+        $routes->get('crear', 'Client::viewClient', ['as' => 'view_search_client']);
+        $routes->get('comprar', 'Client::searchClient', ['as' => 'buy_products_shop']);
+        $routes->post('registro', 'Client::registerClient', ['as' => 'register_client']);
     });
 });
 

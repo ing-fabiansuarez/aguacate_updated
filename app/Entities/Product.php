@@ -49,4 +49,18 @@ class Product extends Entity
         }
         return $quantity;
     }
+    public function quantityStock()
+    { //este modelo muestra la cantidad total que hay por tallas.
+        return $this->mdlStock->table('stock')
+            ->select('*')
+            ->join('size', 'stock.size_id =size.id_size')
+            ->where('stock.product_id',$this->id_product)
+            ->get()->getResultArray();
+    }
+
+    //fabian
+    public function disable(){
+        //calmbia el campo active de la tabla de la base de datos, (desabilita el producto)
+        $this->active_product = false;
+    }
 }
