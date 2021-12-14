@@ -49,4 +49,14 @@ class Product extends Entity
         }
         return $quantity;
     }
+
+    //Ivan 
+    public function quantityStock()
+    { //este modelo muestra la cantidad total que hay por tallas.
+        return $this->mdlStock->table('stock')
+            ->select('*')
+            ->join('size', 'stock.size_id =size.id_size')
+            ->where('stock.product_id',$this->id_product)
+            ->get()->getResultArray();
+    }
 }

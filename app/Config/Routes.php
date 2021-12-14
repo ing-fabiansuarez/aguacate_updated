@@ -104,6 +104,21 @@ $routes->group('administracion', ['namespace' => 'App\Controllers\Admin', 'filte
     $routes->group('api', ['namespace' => 'App\Controllers\Admin\ApiPrivate', 'filter' => 'auth'], function ($routes) {
         $routes->add('getdetail', 'Ajax::getHtmlDetailOrder', ['as' => 'ajax_get_detail_order']);
     });
+
+
+     //Routes Ivan
+
+    //Client
+    $routes->group('cliente', ['namespace' => 'App\Controllers\Admin\Client', 'filter' => 'auth'], function ($routes) {
+        $routes->get('crear', 'Client::viewClient', ['as' => 'view_search_client']);
+        $routes->get('comprar', 'Client::condicionalClient', ['as' => 'verify_client']);
+        $routes->get('registro', 'Client::registerClient', ['as' => 'register_client']);
+        $routes->post('validacion', 'Client::createClient', ['as' => 'client_register']);
+        $routes->post('searchProduct', 'Client::searchProductsCategory', ['as' => 'search_category']);
+        $routes->post('addProduct', 'Client::addProduct', ['as' => 'add']);
+    });
+
+
 });
 
 //routes of auth para administracion

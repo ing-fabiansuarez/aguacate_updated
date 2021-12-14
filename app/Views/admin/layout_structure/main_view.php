@@ -7,6 +7,8 @@
     <meta name="description" content="Aguacate By Kathe">
     <meta name="author" content="Creative Tim">
     <title><?= $this->renderSection('title') ?> - AguacateByKathe</title>
+    <!-- Estilos Ivan -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/ecommerce/styleI.css" type="text/css">
     <!-- Favicon -->
     <link rel="icon" href="<?= base_url() ?>/assets/img/brand/logonegro.png" type="image/png">
     <!-- Fonts -->

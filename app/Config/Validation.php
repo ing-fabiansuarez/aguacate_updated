@@ -146,4 +146,34 @@ class Validation
             'rules'  => 'required|valid_email',
         ],
     ];
+
+    //VALIDACIONES IVAN
+
+    //validar cedula cliente, en la vista view_search_cliente
+    public $formSearchClient = [
+        'documento' => [
+            'rules'  => 'required|is_not_unique[client.id_client]',
+        ],
+    ];
+
+    public $newClient = [
+        'documento' => [
+            'rules'  => 'required|integer',
+        ],
+        'tipo_doc' => [
+            'rules'  => 'required',
+        ],
+        'nombre' => [
+            'rules'  => 'required',
+        ],
+        'apellido' => [
+            'rules'  => 'required',
+        ],
+        'telefono' => [
+            'rules'  => 'required|exact_length[10]|integer',
+        ],
+        'email' => [
+            'rules'  => 'permit_empty|valid_email',
+        ],
+    ];
 }

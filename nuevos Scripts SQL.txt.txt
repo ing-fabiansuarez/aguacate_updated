@@ -1,0 +1,70 @@
+CREATE TABLE IF NOT EXISTS `kathecre_aguacatebykathe`.`client` (
+    `id_client` INT(15) NOT NULL AUTO_INCREMENT,
+  `doc_client` INT(15) NOT NULL,
+  `typeidentification_idtypeiden` INT(11) NOT NULL,
+  `name_client` VARCHAR(45) NOT NULL,
+  `lastname_client` VARCHAR(45) NOT NULL,
+  `phone_client` VARCHAR(45) NOT NULL,
+  `email_client` VARCHAR(45) NULL,
+  `created_client` DATETIME NOT NULL,
+  `updated_client` DATETIME NOT NULL,
+  PRIMARY KEY (`id_client`),
+  CONSTRAINT `fk_client_typeidentification1`
+    FOREIGN KEY (`typeidentification_idtypeiden`)
+    REFERENCES `kathecre_aguacatebykathe`.`typeidentification` (`id_typeiden`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `kathecre_aguacatebykathe`.`order_shop` (
+  `id_ordershop` VARCHAR(15) NOT NULL,
+  `consecutive_ordershop` INT(11) NOT NULL,
+  `created_ordershop` DATETIME NOT NULL,
+  `updated_ordershop` DATETIME NOT NULL,
+  `client_id` INT(11) NOT NULL,
+  `user_id` INT(11) NOT NULL,
+  `shoppinginfo_id` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`id_ordershop`),
+  CONSTRAINT `fk_order_shop_client1`
+    FOREIGN KEY (`client_id`)
+    REFERENCES `kathecre_aguacatebykathe`.`client` (`id_client`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_shop_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `kathecre_aguacatebykathe`.`user` (`id_user`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_shop_shopping_info1`
+    FOREIGN KEY (`shoppinginfo_id`)
+    REFERENCES `kathecre_aguacatebykathe`.`shopping_info` (`id_shoppinginfo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB DEFAULT CHARSET=latin1;
+
+
+-- -----------------------------------------------------
+-- Table `aguacatebykathe`.`ordershop_detail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `kathecre_aguacatebykathe`.`ordershop_detail` (
+  `id_shopdetail` VARCHAR(15) NOT NULL,
+  `price_shopdetail` DOUBLE NOT NULL,
+  `obs_shopdetail` VARCHAR(45) NOT NULL,
+  `stock_productid` VARCHAR(45) NOT NULL,
+  `stock_sizeid` INT(11) NOT NULL,
+  `ordershop_id` VARCHAR(15) NOT NULL,
+  `created_shopdetail` DATETIME NOT NULL,
+  `updated_shopdetail` DATETIME NULL,
+  PRIMARY KEY (`id_shopdetail`),
+  CONSTRAINT `fk_shop_detail_stock1`
+    FOREIGN KEY (`stock_productid` , `stock_sizeid`)
+    REFERENCES `kathecre_aguacatebykathe`.`stock` (`product_id` , `size_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_shop_detail_order_shop1`
+    FOREIGN KEY (`ordershop_id`)
+    REFERENCES `kathecre_aguacatebykathe`.`order_shop` (`id_ordershop`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB DEFAULT CHARSET=latin1;
