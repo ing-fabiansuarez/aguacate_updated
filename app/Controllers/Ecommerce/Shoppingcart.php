@@ -24,7 +24,7 @@ class Shoppingcart extends BaseController
             $product = $this->mdlProduct->find($idProduct);
 
             //VERIFICA QUE NO INGRESEN MAS DE TRES PRENDAS
-            if (isset($_SESSION['shoppingcart'])) {
+            /* if (isset($_SESSION['shoppingcart'])) {
                 $contadorQuantity = 0;
                 foreach ($_SESSION['shoppingcart'] as $abc) {
                     $contadorQuantity += $abc['quantity'];
@@ -34,7 +34,7 @@ class Shoppingcart extends BaseController
                         ->to(base_url() . route_to('view_single_product') . '?id=' . $idProduct)
                         ->with('stock', 'Por hoy, dia sin IVA, solo puedes agregar 3 productos al carrito de compras.');
                 }
-            }
+            } */
 
             //verfica si hay stock o productos en stock
             if (!$product->isInStock($idSize, 1)) {
