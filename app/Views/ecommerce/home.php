@@ -91,6 +91,20 @@
                     </figure>
                 </div>
             </a>
+            <a href="<?= base_url() . route_to('view_categories_section', 'chaquetas') ?>">
+                <div class="bb-middle-agileits-w3layouts forth grid">
+                    <figure class="effect-roxy">
+                        <img src="assets/img/ecommerce/home/category-chaquetas.jpeg" alt=" " class="img-responsive" />
+                        <figcaption>
+                            <h3><span>C</span>haquetas </h3>
+                            <br><br>
+                            <div class="btn-categories">
+                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'chaquetas') ?>">Las amo </a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </a>
             <a href="<?= base_url() . route_to('view_categories_section', 'vlargos') ?>">
                 <div class="bb-middle-agileits-w3layouts forth grid">
 
