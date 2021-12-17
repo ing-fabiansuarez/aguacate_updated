@@ -77,6 +77,23 @@
 
         <div class="col-md-5 bb-grids bb-middle-agileits-w3layouts">
 
+            <!-- sets -->
+            <a href="<?= base_url() . route_to('view_categories_section', 'sets') ?>">
+                <div class="bb-middle-agileits-w3layouts grid">
+                    <figure class="effect-roxy">
+                        <img src="assets/img/ecommerce/home/category2-1.jpeg" alt=" " class="img-responsive" />
+                        <figcaption>
+                            <h3><span>S</span>ets </h3>
+                            <br><br>
+                            <div class="btn-categories">
+                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'sets') ?>">Los quiero </a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </a>
+
+            <!--  blusas -->
             <a href="<?= base_url() . route_to('view_categories_section', 'vcortos') ?>">
                 <div class="bb-middle-agileits-w3layouts grid">
                     <figure class="effect-roxy">
@@ -91,20 +108,8 @@
                     </figure>
                 </div>
             </a>
-            <a href="<?= base_url() . route_to('view_categories_section', 'chaquetas') ?>">
-                <div class="bb-middle-agileits-w3layouts forth grid">
-                    <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category-chaquetas.jpeg" alt=" " class="img-responsive" />
-                        <figcaption>
-                            <h3><span>C</span>haquetas </h3>
-                            <br><br>
-                            <div class="btn-categories">
-                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'chaquetas') ?>">Las amo </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </div>
-            </a>
+
+            <!-- vestidos cortos -->
             <a href="<?= base_url() . route_to('view_categories_section', 'vlargos') ?>">
                 <div class="bb-middle-agileits-w3layouts forth grid">
 
@@ -120,6 +125,13 @@
                     </figure>
                 </div>
             </a>
+
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-7 bb-grids bb-middle-agileits-w3layouts">
+
+            <!-- vestidos largos -->
             <a href="<?= base_url() . route_to('view_categories_section', 'vlargos') ?>">
                 <div class="bb-middle-agileits-w3layouts forth grid">
                     <figure class="effect-roxy">
@@ -134,24 +146,9 @@
                     </figure>
                 </div>
             </a>
-            <div class="clearfix"></div>
-        </div>
-        <div class="col-md-7 bb-grids bb-middle-agileits-w3layouts">
-            <a href="mens.html">
-                <div class="bb-middle-agileits-w3layouts grid">
-                    <figure class="effect-roxy">
-                        <img src="assets/img/ecommerce/home/category2-1.jpeg" alt=" " class="img-responsive" />
-                        <figcaption>
-                            <h3><span>S</span>ets </h3>
-                            <br><br>
-                            <div class="btn-categories">
-                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'sets') ?>">Los quiero </a>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </div>
-            </a>
-            <a href="mens.html">
+
+            <!-- enterizos -->
+            <a href="<?= base_url() . route_to('view_categories_section', 'enterizos') ?>">
                 <div class="bb-middle-agileits-w3layouts forth grid">
                     <figure class="effect-roxy">
                         <img src="assets/img/ecommerce/home/category3-1.jpeg" alt=" " class="img-responsive">
@@ -160,6 +157,22 @@
                             <br><br>
                             <div class="btn-categories">
                                 <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'enterizos') ?>">Los adoro </a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </a>
+
+            <!-- chaquetas -->
+            <a href="<?= base_url() . route_to('view_categories_section', 'chaquetas') ?>">
+                <div class="bb-middle-agileits-w3layouts forth grid">
+                    <figure class="effect-roxy">
+                        <img src="assets/img/ecommerce/home/category-chaquetas.jpeg" alt=" " class="img-responsive" />
+                        <figcaption>
+                            <h3><span>C</span>haquetas </h3>
+                            <br><br>
+                            <div class="btn-categories">
+                                <a class="hvr-outline-out button2" href="<?= base_url() . route_to('view_categories_section', 'chaquetas') ?>">Las amo </a>
                             </div>
                         </figcaption>
                     </figure>
