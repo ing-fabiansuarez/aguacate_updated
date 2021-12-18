@@ -80,6 +80,7 @@
                             <li class="menu__item <?= $this->renderSection('sets') ?>"><a class="menu__link" href="<?= base_url() . route_to('view_categories_section', 'sets') ?>">Sets</a></li>
                             <li class="menu__item <?= $this->renderSection('enterizos') ?>"><a class="menu__link" href="<?= base_url() . route_to('view_categories_section', 'enterizos') ?>">Enterizos</a></li>
                             <li class="menu__item <?= $this->renderSection('blusas') ?>"><a class="menu__link" href="<?= base_url() . route_to('view_categories_section', 'blusas') ?>">Blusas</a></li>
+                            <li class="menu__item <?= $this->renderSection('chaquetas') ?>"><a class="menu__link" href="<?= base_url() . route_to('view_categories_section', 'chaquetas') ?>">Chaquetas</a></li>
                         </ul>
                     </div>
                 </div>
