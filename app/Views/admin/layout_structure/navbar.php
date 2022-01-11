@@ -195,16 +195,16 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                             <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src="../assets/img/users/sin-image.png">
+                                <img alt="Image placeholder" src="<?= base_url(session('image_user')) ?>">
                             </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">John Snow</span>
+                                <span class="mb-0 text-sm  font-weight-bold"><?= session()->get('name_user') ?></span>
                             </div>
                         </div>
                     </a>
                     <div class="dropdown-menu  dropdown-menu-right ">
                         <div class="dropdown-header noti-title">
-                            <h6 class="text-overflow m-0">Welcome!</h6>
+                            <h6 class="text-overflow m-0">Bienvenido!</h6>
                         </div>
                         <a href="#!" class="dropdown-item">
                             <i class="ni ni-single-02"></i>
@@ -225,7 +225,7 @@
                         <div class="dropdown-divider"></div>
                         <a href="<?= base_url() . route_to('logout_admin') ?>" class="dropdown-item">
                             <i class="ni ni-user-run"></i>
-                            <span>Logout</span>
+                            <span>Cerrar Sesi&oacute;n</span>
                         </a>
                     </div>
                 </li>
