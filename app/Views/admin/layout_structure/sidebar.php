@@ -12,15 +12,25 @@
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard.html">
+                        <a class="nav-link <?= $this->renderSection('home') ?>" href="<?= base_url() . route_to('admin_page_home') ?>">
                             <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Estad&iacute;sticas</span>
+                            <span class="nav-link-text">Inicio</span>
                         </a>
                     </li>
                 </ul>
-
                 <hr class="my-3">
-
+                <h6 class="navbar-heading p-0 text-muted">
+                    <span class="docs-normal">PEDIDOS PAGINA WEB</span>
+                </h6>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link <?= $this->renderSection('listorderdaily') ?>" href="<?= base_url() . route_to('view_daily_orders', date("Y-m-d")) ?>">
+                            <i class="fas fa-clipboard-list text-default"></i>
+                            <span class="nav-link-text">Pedidos</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr class="my-3">
                 <h6 class="navbar-heading p-0 text-muted">
                     <span class="docs-normal">PRODUCTOS</span>
                 </h6>
@@ -44,23 +54,7 @@
                         </a>
                     </li>
                 </ul>
-
                 <hr class="my-3">
-
-                <h6 class="navbar-heading p-0 text-muted">
-                    <span class="docs-normal">PEDIDOS PAGINA WEB</span>
-                </h6>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link <?= $this->renderSection('listorderdaily') ?>" href="<?= base_url() . route_to('view_daily_orders', date("Y-m-d")) ?>">
-                            <i class="fas fa-clipboard-list text-default"></i>
-                            <span class="nav-link-text">Pedidos</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <hr class="my-3">
-
                 <h6 class="navbar-heading p-0 text-muted">
                     <span class="docs-normal">PEDIDOS WHATSAPP Y TIENDA</span>
                 </h6>
@@ -72,8 +66,6 @@
                         </a>
                     </li>
                 </ul>
-
-
                 <hr class="my-3">
                 <!-- Heading -->
                 <h6 class="navbar-heading p-0 text-muted">

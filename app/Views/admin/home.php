@@ -1,7 +1,7 @@
 <?= $this->extend('admin/layout_structure/main_view') ?>
 <?= $this->section('title') ?>Home<?= $this->endSection() ?>
 
-
+<?= $this->section('home') ?>active<?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <div class="header bg-primary pb-6">
     <div class="container-fluid">
@@ -33,9 +33,9 @@
                 <div class="card-header bg-transparent">
                     <h3 class="mb-0">HOME</h3>
                 </div>
-                <div class="card-body">
+               <!--  <div class="card-body">
                     <a href="<?= base_url() . route_to('descontar') ?>" class="btn btn-round btn-primary">Descargar los productos</a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
